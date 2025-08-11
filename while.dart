@@ -1,14 +1,17 @@
-import 'dart:async';
+import 'dart:io';
 
 void main() {
-  printNumbers();
-}
+  const String correctPassword = "flutter123";
+  String? userInput;
 
-Future<void> printNumbers() async {
-  int i = 1;
-  while (i <= 5) {
-    print(i);
-    await Future.delayed(Duration(seconds: 1));
-    i++;
+  while (userInput != correctPassword) {
+    stdout.write("Enter your password: ");
+    userInput = stdin.readLineSync();
+
+    if (userInput != correctPassword) {
+      print("Incorrect password. Try again.\n");
+    }
   }
+
+  print("✅ Access granted!");
 }
